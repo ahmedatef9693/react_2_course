@@ -24,12 +24,12 @@ class ShoppingCard extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>Shopping Card</h1>
         {this.state.products.map((product) => (
           <Product key={product.id} product={product} />
         ))}
-      </div>
+      </React.Fragment>
     );
   }
 }
