@@ -21,13 +21,28 @@ class ShoppingCard extends Component {
       },
     ],
   };
+  handleDelete = (product) => {
+    const products = this.state.products.filter((p) => p.id !== product.id);
+    this.setState({ products });
+  };
+  handleIncrement = (product) => {
+    let products = [...this.state.products];
+    const index = products.indexOf(product);
+    products[index].count++;
+    this.setState({ products });
+  };
 
   render() {
     return (
       <React.Fragment>
         <h1>Shopping Card</h1>
         {this.state.products.map((product) => (
-          <Product key={product.id} product={product} />
+          <Product
+            key={product.id}
+            product={product}
+            onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
+          />
         ))}
       </React.Fragment>
     );
